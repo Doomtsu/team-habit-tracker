@@ -1,13 +1,126 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from "react";
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Activity,
+  Users,
+  Trophy,
+  TrendingUp,
+  ChevronRight,
+} from "lucide-react";
 
 const Index = () => {
+  const { toast } = useToast();
+
+  const features = [
+    {
+      icon: <Activity className="h-8 w-8 text-primary" />,
+      title: "Track Habits",
+      description:
+        "Set and monitor daily, weekly, or monthly goals for various healthy habits.",
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: "Team Building",
+      description:
+        "Create or join teams, collaborate, and motivate each other to achieve goals.",
+    },
+    {
+      icon: <Trophy className="h-8 w-8 text-primary" />,
+      title: "Earn Rewards",
+      description:
+        "Earn badges and achievements as you and your team reach milestones.",
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8 text-primary" />,
+      title: "Track Progress",
+      description:
+        "Visualize your progress with interactive charts and detailed analytics.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <section className="py-20 text-center">
+        <h1 className="text-5xl font-bold mb-6 animate-slide-in">
+          Build Healthy Habits{" "}
+          <span className="text-primary">Together</span>
+        </h1>
+        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-in">
+          Join teams, track habits, and achieve your health goals with our
+          comprehensive team tracking platform.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4 animate-slide-in">
+          <Button
+            size="lg"
+            className="btn-primary"
+            onClick={() => {
+              toast({
+                title: "Coming Soon",
+                description: "Sign up will be available soon!",
+              });
+            }}
+          >
+            Get Started <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => {
+              toast({
+                title: "Coming Soon",
+                description: "Demo will be available soon!",
+              });
+            }}
+          >
+            Watch Demo
+          </Button>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted rounded-lg">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Why Choose HealthyHabit?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-background p-6 rounded-lg shadow-sm card-hover"
+              >
+                <div className="mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join thousands of users who are already building better habits and
+            achieving their health goals together.
+          </p>
+          <Button
+            size="lg"
+            className="btn-primary"
+            onClick={() => {
+              toast({
+                title: "Coming Soon",
+                description: "Sign up will be available soon!",
+              });
+            }}
+          >
+            Start Your Journey <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </section>
+    </Layout>
   );
 };
 
