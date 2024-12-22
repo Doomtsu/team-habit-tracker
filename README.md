@@ -1,8 +1,8 @@
-# Temporary
+# Temporary stuff >
 
-## Project info
+### Project info
 **URL**: https://lovable.dev/projects/261750ed-7d93-4a80-812e-6941fb6cc751
-## How can I edit this code?
+### How can I edit this code?
 There are several ways of editing your application.
 **Use Lovable**
 Simply visit the [Lovable Project](https://lovable.dev/projects/261750ed-7d93-4a80-812e-6941fb6cc751) and start prompting.
