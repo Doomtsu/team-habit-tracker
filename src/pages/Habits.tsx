@@ -9,7 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Plus } from "lucide-react";
+import { Plus, Award, Medal, Trophy, BadgeCheck } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const Habits = () => {
   const { toast } = useToast();
@@ -46,6 +47,42 @@ const Habits = () => {
     },
   ];
 
+  // Placeholder badges data - would come from backend
+  const teamBadges = [
+    {
+      id: 1,
+      name: "Perfect Week",
+      description: "Complete all habits for 7 days straight",
+      icon: Trophy,
+      earned: true,
+      date: "2024-02-15",
+    },
+    {
+      id: 2,
+      name: "Early Birds",
+      description: "Team completed morning habits for 5 days",
+      icon: Medal,
+      earned: true,
+      date: "2024-02-10",
+    },
+    {
+      id: 3,
+      name: "Consistency Kings",
+      description: "Maintain 80% completion rate for 2 weeks",
+      icon: Award,
+      earned: false,
+      date: null,
+    },
+    {
+      id: 4,
+      name: "Goal Crushers",
+      description: "Complete 50 team habits",
+      icon: BadgeCheck,
+      earned: true,
+      date: "2024-02-01",
+    },
+  ];
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
@@ -63,7 +100,7 @@ const Habits = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {habits.map((habit) => (
             <Card key={habit.id}>
               <CardHeader>
@@ -86,6 +123,39 @@ const Habits = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6">Team Badges</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {teamBadges.map((badge) => (
+              <Card 
+                key={badge.id} 
+                className={`text-center transition-all duration-300 hover:shadow-lg ${
+                  !badge.earned && 'opacity-50'
+                }`}
+              >
+                <CardContent className="pt-6">
+                  <div className="mb-4">
+                    <badge.icon className={`h-12 w-12 mx-auto ${
+                      badge.earned ? 'text-primary' : 'text-gray-400'
+                    }`} />
+                  </div>
+                  <h3 className="font-semibold mb-2">{badge.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {badge.description}
+                  </p>
+                  {badge.earned ? (
+                    <Badge variant="secondary">
+                      Earned {new Date(badge.date).toLocaleDateString()}
+                    </Badge>
+                  ) : (
+                    <Badge variant="outline">Not earned yet</Badge>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
