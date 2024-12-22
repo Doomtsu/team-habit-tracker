@@ -1,4 +1,4 @@
-**Key Features of the Web Application:**
+# Key Features of the Web Application:
 Habit Tracking: Teams can set and monitor daily, weekly, and monthly goals for habits like exercise, hydration, sleep, and more.
 Progress Visualization: Interactive charts and graphs provide an engaging way to view progress over time.
 Reminders and Notifications: Customizable notifications encourage consistency and help teams meet their goals.
