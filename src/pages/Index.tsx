@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import {
   Activity,
   Users,
@@ -12,6 +13,15 @@ import {
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Welcome!",
+      description: "Let's create your account to get started.",
+    });
+    navigate("/dashboard");
+  };
 
   const features = [
     {
@@ -55,12 +65,7 @@ const Index = () => {
           <Button
             size="lg"
             className="btn-primary"
-            onClick={() => {
-              toast({
-                title: "Coming Soon",
-                description: "Sign up will be available soon!",
-              });
-            }}
+            onClick={handleGetStarted}
           >
             Get Started <ChevronRight className="ml-2 h-4 w-4" />
           </Button>
@@ -68,9 +73,10 @@ const Index = () => {
             size="lg"
             variant="outline"
             onClick={() => {
+              window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
               toast({
-                title: "Coming Soon",
-                description: "Demo will be available soon!",
+                title: "Demo Video",
+                description: "Opening demo video in a new tab.",
               });
             }}
           >
@@ -109,12 +115,7 @@ const Index = () => {
           <Button
             size="lg"
             className="btn-primary"
-            onClick={() => {
-              toast({
-                title: "Coming Soon",
-                description: "Sign up will be available soon!",
-              });
-            }}
+            onClick={handleGetStarted}
           >
             Start Your Journey <ChevronRight className="ml-2 h-4 w-4" />
           </Button>

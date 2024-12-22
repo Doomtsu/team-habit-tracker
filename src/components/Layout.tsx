@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { SignInDialog } from "./SignInDialog";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,9 +12,18 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Welcome!",
+      description: "Let's create your account to get started.",
+    });
+    navigate("/dashboard");
   };
 
   return (
@@ -38,18 +48,7 @@ export const Layout = ({ children }: LayoutProps) => {
               <Link to="/leaderboard" className="nav-link">
                 Leaderboard
               </Link>
-              <Button
-                variant="default"
-                className="btn-primary"
-                onClick={() => {
-                  toast({
-                    title: "Coming Soon",
-                    description: "This feature will be available soon!",
-                  });
-                }}
-              >
-                Sign In
-              </Button>
+              <SignInDialog />
             </div>
 
             <button
@@ -95,18 +94,7 @@ export const Layout = ({ children }: LayoutProps) => {
               >
                 Leaderboard
               </Link>
-              <Button
-                variant="default"
-                className="btn-primary w-full"
-                onClick={() => {
-                  toast({
-                    title: "Coming Soon",
-                    description: "This feature will be available soon!",
-                  });
-                }}
-              >
-                Sign In
-              </Button>
+              <SignInDialog />
             </div>
           )}
         </nav>
@@ -123,4 +111,4 @@ export const Layout = ({ children }: LayoutProps) => {
       </footer>
     </div>
   );
-};
+}
