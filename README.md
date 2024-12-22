@@ -1,39 +1,14 @@
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Key Features of the Web Application:**
+Habit Tracking: Teams can set and monitor daily, weekly, and monthly goals for habits like exercise, hydration, sleep, and more.
+Progress Visualization: Interactive charts and graphs provide an engaging way to view progress over time.
+Reminders and Notifications: Customizable notifications encourage consistency and help teams meet their goals.
+Gamification: Teams earn digital badges and rewards for achieving milestones, promoting friendly competition.
+User Roles:
+Team Members: Manage personal goals and contribute to team efforts.
+Team Captains: Set team goals and oversee progress.
+Administrators: Manage teams, set company-wide goals, and monitor overall performance.
+Secure Backend: Data encryption ensures user information and passwords are safely stored.
+Custom Database Design: Built using [your database technology, e.g., Firebase/MongoDB/SQL], enabling efficient storage and retrieval of user profiles, team data, and progress history
 
 ## What technologies are used for this project?
 
