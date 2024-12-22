@@ -14,7 +14,6 @@ import { Plus } from "lucide-react";
 const Habits = () => {
   const { toast } = useToast();
 
-  // Placeholder data - would come from backend in real application
   const habits = [
     {
       id: 1,
