@@ -46,6 +46,3 @@ This project is built with .
 - Tailwind CSS
 
 
-## ow can I deploy this project?
-
-If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
