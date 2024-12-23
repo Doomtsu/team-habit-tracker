@@ -11,6 +11,13 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Plus, Bell, BarChart } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Habits = () => {
   const { toast } = useToast();
@@ -23,7 +30,7 @@ const Habits = () => {
       target: "10000 steps",
       progress: 80,
       streak: 5,
-      type: "daily",
+      frequency: "daily",
       reminderTime: "09:00",
       data: [
         { day: "Mon", value: 8000 },
@@ -39,7 +46,7 @@ const Habits = () => {
       target: "8 glasses",
       progress: 60,
       streak: 3,
-      type: "daily",
+      frequency: "daily",
       reminderTime: "10:00",
       data: [
         { day: "Mon", value: 6 },
@@ -52,33 +59,31 @@ const Habits = () => {
     {
       id: 3,
       name: "Sleep",
-      target: "8 hours",
+      target: "56 hours",
       progress: 90,
       streak: 7,
-      type: "daily",
+      frequency: "weekly",
       reminderTime: "22:00",
       data: [
-        { day: "Mon", value: 7.5 },
-        { day: "Tue", value: 8 },
-        { day: "Wed", value: 8.2 },
-        { day: "Thu", value: 7.8 },
-        { day: "Fri", value: 8.1 },
+        { day: "Week 1", value: 52 },
+        { day: "Week 2", value: 54 },
+        { day: "Week 3", value: 56 },
+        { day: "Week 4", value: 53 },
       ],
     },
     {
       id: 4,
       name: "Pet Time",
-      target: "30 minutes",
+      target: "600 minutes",
       progress: 40,
       streak: 2,
-      type: "daily",
+      frequency: "monthly",
       reminderTime: "18:00",
       data: [
-        { day: "Mon", value: 20 },
-        { day: "Tue", value: 25 },
-        { day: "Wed", value: 15 },
-        { day: "Thu", value: 30 },
-        { day: "Fri", value: 20 },
+        { day: "Jan", value: 500 },
+        { day: "Feb", value: 550 },
+        { day: "Mar", value: 580 },
+        { day: "Apr", value: 520 },
       ],
     },
   ];
@@ -104,6 +109,13 @@ const Habits = () => {
     });
   };
 
+  const handleFrequencyChange = (habitId: number, frequency: string) => {
+    toast({
+      title: "Frequency Updated",
+      description: `Goal frequency updated to ${frequency}`,
+    });
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
@@ -119,7 +131,22 @@ const Habits = () => {
             <Card key={habit.id} className="overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-xl flex justify-between items-center">
-                  {habit.name}
+                  <div className="flex flex-col">
+                    <span>{habit.name}</span>
+                    <Select
+                      defaultValue={habit.frequency}
+                      onValueChange={(value) => handleFrequencyChange(habit.id, value)}
+                    >
+                      <SelectTrigger className="w-[180px] h-8 mt-2 text-sm">
+                        <SelectValue placeholder="Select frequency" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="daily">Daily Goal</SelectItem>
+                        <SelectItem value="weekly">Weekly Goal</SelectItem>
+                        <SelectItem value="monthly">Monthly Goal</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                   <div className="flex gap-2">
                     <Button
                       variant="outline"
@@ -149,7 +176,7 @@ const Habits = () => {
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Target: {habit.target}</span>
-                    <span>Streak: {habit.streak} days</span>
+                    <span>Streak: {habit.streak} {habit.frequency === 'daily' ? 'days' : habit.frequency === 'weekly' ? 'weeks' : 'months'}</span>
                   </div>
                   <div className="h-32 mt-4">
                     <ResponsiveContainer width="100%" height="100%">
