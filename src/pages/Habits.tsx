@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Plus, Bell, BarChart } from "lucide-react";
-import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const Habits = () => {
   const { toast } = useToast();
@@ -153,12 +152,12 @@ const Habits = () => {
                     <span>Streak: {habit.streak} days</span>
                   </div>
                   <div className="h-32 mt-4">
-                    <ChartContainer config={{}}>
+                    <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={habit.data}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="day" />
                         <YAxis />
-                        <Tooltip content={<ChartTooltip />} />
+                        <Tooltip />
                         <Area
                           type="monotone"
                           dataKey="value"
@@ -167,7 +166,7 @@ const Habits = () => {
                           fillOpacity={0.3}
                         />
                       </AreaChart>
-                    </ChartContainer>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               </CardContent>
