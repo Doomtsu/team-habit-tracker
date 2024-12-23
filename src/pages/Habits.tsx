@@ -140,10 +140,10 @@ const Habits = () => {
                       <SelectTrigger className="w-[180px] h-8 mt-2 text-sm">
                         <SelectValue placeholder="Select frequency" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="daily">Daily Goal</SelectItem>
-                        <SelectItem value="weekly">Weekly Goal</SelectItem>
-                        <SelectItem value="monthly">Monthly Goal</SelectItem>
+                      <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg">
+                        <SelectItem className="hover:bg-gray-100 dark:hover:bg-gray-700" value="daily">Daily Goal</SelectItem>
+                        <SelectItem className="hover:bg-gray-100 dark:hover:bg-gray-700" value="weekly">Weekly Goal</SelectItem>
+                        <SelectItem className="hover:bg-gray-100 dark:hover:bg-gray-700" value="monthly">Monthly Goal</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
