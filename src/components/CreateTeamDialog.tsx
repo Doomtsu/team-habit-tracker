@@ -27,7 +27,7 @@ import { useToast } from "@/hooks/use-toast";
 const formSchema = z.object({
   name: z.string().min(2, "Team name must be at least 2 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
-  maxMembers: z.string().transform((val) => parseInt(val, 10)),
+  maxMembers: z.coerce.number().min(2).max(20),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -41,7 +41,7 @@ export function CreateTeamDialog() {
     defaultValues: {
       name: "",
       description: "",
-      maxMembers: "5",
+      maxMembers: 5,
     },
   });
 
@@ -122,6 +122,7 @@ export function CreateTeamDialog() {
                       max="20"
                       placeholder="Enter max team size"
                       {...field}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormMessage />
