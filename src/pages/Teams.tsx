@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { Users, Trophy, TrendingUp } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -10,12 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Users, Trophy, TrendingUp } from "lucide-react";
+import { CreateTeamDialog } from "@/components/CreateTeamDialog";
 
 const Teams = () => {
-  const { toast } = useToast();
-
-  // Placeholder data - this would come from your backend in a real application
+  // This would typically come from your backend
   const teams = [
     {
       id: 1,
@@ -48,16 +45,7 @@ const Teams = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Teams</h1>
-          <Button
-            onClick={() => {
-              toast({
-                title: "Coming Soon",
-                description: "Team creation will be available soon!",
-              });
-            }}
-          >
-            Create Team
-          </Button>
+          <CreateTeamDialog />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
