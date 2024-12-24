@@ -64,24 +64,24 @@ const Teams = () => {
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold gradient-text">Teams</h1>
+          <h1 className="text-3xl font-bold text-foreground">Teams</h1>
           <CreateTeamDialog onTeamCreated={handleTeamCreated} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in">
+          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in dark:bg-gray-800">
             <Users className="h-8 w-8 text-primary mb-2 animate-float" />
             <h3 className="text-xl font-semibold mb-1">Total Teams</h3>
             <p className="text-3xl font-bold">{teams.length}</p>
           </div>
-          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in dark:bg-gray-800" style={{ animationDelay: "0.1s" }}>
             <Trophy className="h-8 w-8 text-primary mb-2 animate-float" />
             <h3 className="text-xl font-semibold mb-1">Total Goals Completed</h3>
             <p className="text-3xl font-bold">
               {teams.reduce((acc, team) => acc + team.completedGoals, 0)}
             </p>
           </div>
-          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <div className="glass-card p-6 rounded-lg hover-lift animate-fade-in dark:bg-gray-800" style={{ animationDelay: "0.2s" }}>
             <TrendingUp className="h-8 w-8 text-primary mb-2 animate-float" />
             <h3 className="text-xl font-semibold mb-1">Highest Streak</h3>
             <p className="text-3xl font-bold">
@@ -90,10 +90,10 @@ const Teams = () => {
           </div>
         </div>
 
-        <div className="glass-card rounded-lg overflow-hidden animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <div className="glass-card rounded-lg overflow-hidden animate-fade-in dark:bg-gray-800" style={{ animationDelay: "0.3s" }}>
           <Table>
             <TableHeader>
-              <TableRow className="bg-gray-50/50">
+              <TableRow className="bg-muted/50 dark:bg-gray-700">
                 <TableHead>Team Name</TableHead>
                 <TableHead>Members</TableHead>
                 <TableHead>Completed Goals</TableHead>
@@ -105,7 +105,7 @@ const Teams = () => {
               {teams.map((team, index) => (
                 <TableRow 
                   key={team.id}
-                  className="hover:bg-gray-50/50 transition-colors duration-200"
+                  className="hover:bg-muted/50 dark:hover:bg-gray-700 transition-colors duration-200"
                 >
                   <TableCell className="font-medium">{team.name}</TableCell>
                   <TableCell>{team.members}</TableCell>
