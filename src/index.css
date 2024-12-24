@@ -38,18 +38,71 @@
 
 @layer components {
   .card-hover {
-    @apply transition-transform duration-300 hover:-translate-y-1;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
   
   .nav-link {
-    @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+    @apply text-muted-foreground hover:text-foreground transition-all duration-200;
   }
   
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary-hover transition-colors duration-200;
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover transition-all duration-200 shadow-sm hover:shadow-md;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover transition-colors duration-200;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover transition-all duration-200 shadow-sm hover:shadow-md;
   }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite;
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
