@@ -23,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Team } from "@/pages/Teams";
 
 const formSchema = z.object({
   name: z.string().min(2, "Team name must be at least 2 characters"),
@@ -32,7 +33,11 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export function CreateTeamDialog() {
+interface CreateTeamDialogProps {
+  onTeamCreated: (team: Pick<Team, "name" | "members">) => void;
+}
+
+export function CreateTeamDialog({ onTeamCreated }: CreateTeamDialogProps) {
   const [open, setOpen] = React.useState(false);
   const { toast } = useToast();
 
@@ -47,8 +52,10 @@ export function CreateTeamDialog() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Here you would typically make an API call to create the team
-      console.log("Creating team:", data);
+      onTeamCreated({
+        name: data.name,
+        members: data.maxMembers,
+      });
       
       toast({
         title: "Team created!",

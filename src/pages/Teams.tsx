@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Users, Trophy, TrendingUp } from "lucide-react";
 import {
@@ -11,9 +11,17 @@ import {
 } from "@/components/ui/table";
 import { CreateTeamDialog } from "@/components/CreateTeamDialog";
 
+export interface Team {
+  id: number;
+  name: string;
+  members: number;
+  completedGoals: number;
+  activeStreak: number;
+  points: number;
+}
+
 const Teams = () => {
-  // This would typically come from your backend
-  const teams = [
+  const [teams, setTeams] = useState<Team[]>([
     {
       id: 1,
       name: "Health Warriors",
@@ -38,14 +46,26 @@ const Teams = () => {
       activeStreak: 7,
       points: 320,
     },
-  ];
+  ]);
+
+  const handleTeamCreated = (newTeam: Omit<Team, "id" | "completedGoals" | "activeStreak" | "points">) => {
+    const teamToAdd: Team = {
+      id: teams.length + 1,
+      name: newTeam.name,
+      members: newTeam.members,
+      completedGoals: 0,
+      activeStreak: 0,
+      points: 0,
+    };
+    setTeams([...teams, teamToAdd]);
+  };
 
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Teams</h1>
-          <CreateTeamDialog />
+          <CreateTeamDialog onTeamCreated={handleTeamCreated} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
