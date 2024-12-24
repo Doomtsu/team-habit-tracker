@@ -21,7 +21,11 @@ export const Layout = ({ children }: LayoutProps) => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
+    if (!isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
     toast({
       title: isDarkMode ? "Light mode enabled" : "Dark mode enabled",
       duration: 1500,
@@ -37,32 +41,32 @@ export const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted transition-colors duration-300">
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300">
+    <div className="min-h-screen bg-background text-foreground dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 dark:bg-gray-900/80 dark:border-gray-700">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-primary hover:scale-105 transition-transform">
+            <Link to="/" className="text-2xl font-bold text-primary hover:scale-105 transition-transform dark:text-primary-foreground">
               HealthyHabit
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="/dashboard" className="nav-link hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform">
+              <Link to="/dashboard" className="nav-link dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:-translate-y-0.5 transform">
                 Dashboard
               </Link>
-              <Link to="/teams" className="nav-link hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform">
+              <Link to="/teams" className="nav-link dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:-translate-y-0.5 transform">
                 Teams
               </Link>
-              <Link to="/habits" className="nav-link hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform">
+              <Link to="/habits" className="nav-link dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:-translate-y-0.5 transform">
                 Habits
               </Link>
-              <Link to="/leaderboard" className="nav-link hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform">
+              <Link to="/leaderboard" className="nav-link dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:-translate-y-0.5 transform">
                 Leaderboard
               </Link>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={toggleDarkMode}
-                className="mr-2"
+                className="mr-2 dark:text-gray-300 dark:hover:text-white"
               >
                 {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>
@@ -70,7 +74,7 @@ export const Layout = ({ children }: LayoutProps) => {
             </div>
 
             <button
-              className="md:hidden p-2 hover:bg-muted rounded-full transition-colors duration-200"
+              className="md:hidden p-2 hover:bg-muted rounded-full transition-colors duration-200 dark:text-gray-300 dark:hover:bg-gray-800"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -83,31 +87,31 @@ export const Layout = ({ children }: LayoutProps) => {
           </div>
 
           {isMenuOpen && (
-            <div className="md:hidden mt-4 space-y-4 animate-fade-in">
+            <div className="md:hidden mt-4 space-y-4 animate-fade-in dark:bg-gray-900">
               <Link
                 to="/dashboard"
-                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200"
+                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                 onClick={toggleMenu}
               >
                 Dashboard
               </Link>
               <Link
                 to="/teams"
-                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200"
+                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                 onClick={toggleMenu}
               >
                 Teams
               </Link>
               <Link
                 to="/habits"
-                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200"
+                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                 onClick={toggleMenu}
               >
                 Habits
               </Link>
               <Link
                 to="/leaderboard"
-                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200"
+                className="block nav-link py-2 hover:bg-muted rounded-lg px-3 transition-all duration-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                 onClick={toggleMenu}
               >
                 Leaderboard
@@ -116,7 +120,7 @@ export const Layout = ({ children }: LayoutProps) => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleDarkMode}
-                className="w-full justify-start"
+                className="w-full justify-start dark:text-gray-300 dark:hover:text-white"
               >
                 {isDarkMode ? <Sun className="h-5 w-5 mr-2" /> : <Moon className="h-5 w-5 mr-2" />}
                 {isDarkMode ? 'Light Mode' : 'Dark Mode'}
@@ -127,12 +131,12 @@ export const Layout = ({ children }: LayoutProps) => {
         </nav>
       </header>
 
-      <main className="container mx-auto px-4 py-8 animate-fade-in min-h-[calc(100vh-180px)]">
+      <main className="container mx-auto px-4 py-8 animate-fade-in min-h-[calc(100vh-180px)] dark:bg-gray-900">
         {children}
       </main>
 
-      <footer className="border-t bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6 text-center text-muted-foreground">
+      <footer className="border-t bg-background/80 backdrop-blur-sm dark:bg-gray-900/80 dark:border-gray-700">
+        <div className="container mx-auto px-4 py-6 text-center text-muted-foreground dark:text-gray-400">
           <p>&copy; 2024 HealthyHabit Team Tracker. All rights reserved.</p>
         </div>
       </footer>
