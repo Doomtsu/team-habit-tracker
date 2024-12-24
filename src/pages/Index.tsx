@@ -87,7 +87,7 @@ const Index = () => {
 
       <section className="py-20 bg-muted rounded-lg">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             Why Choose HealthyHabit?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -97,7 +97,7 @@ const Index = () => {
                 className="bg-background p-6 rounded-lg shadow-sm card-hover"
               >
                 <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
@@ -107,7 +107,7 @@ const Index = () => {
 
       <section className="py-20">
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-foreground">Ready to Get Started?</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of users who are already building better habits and
             achieving their health goals together.
