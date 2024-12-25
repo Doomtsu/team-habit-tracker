@@ -72,6 +72,7 @@ const Index = () => {
           <Button
             size="lg"
             variant="outline"
+            className="dark:text-white dark:hover:text-black"
             onClick={() => {
               window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
               toast({
