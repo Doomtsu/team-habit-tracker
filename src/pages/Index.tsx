@@ -53,7 +53,7 @@ const Index = () => {
   return (
     <Layout>
       <section className="py-20 text-center">
-        <h1 className="text-5xl font-bold mb-6 animate-slide-in">
+        <h1 className="text-5xl font-bold mb-6 animate-slide-in text-foreground">
           Build Healthy Habits{" "}
           <span className="text-primary">Together</span>
         </h1>
@@ -85,7 +85,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-muted rounded-lg">
+      <section className="py-20 bg-muted dark:bg-gray-800 rounded-lg">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             Why Choose HealthyHabit?
@@ -94,11 +94,15 @@ const Index = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-background p-6 rounded-lg shadow-sm card-hover"
+                className="bg-background dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover"
               >
                 <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground dark:text-gray-300">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -107,8 +111,10 @@ const Index = () => {
 
       <section className="py-20">
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Ready to Get Started?</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Ready to Get Started?
+          </h2>
+          <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of users who are already building better habits and
             achieving their health goals together.
           </p>
