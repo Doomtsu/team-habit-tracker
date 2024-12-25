@@ -9,6 +9,7 @@ import {
   Trophy,
   TrendingUp,
   ChevronRight,
+  PlayCircle,
 } from "lucide-react";
 
 const Index = () => {
@@ -52,52 +53,63 @@ const Index = () => {
 
   return (
     <Layout>
-      <section className="py-20 text-center">
-        <h1 className="text-5xl font-bold mb-6 animate-slide-in text-foreground dark:text-white">
-          Build Healthy Habits{" "}
-          <span className="text-primary">Together</span>
-        </h1>
-        <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-in">
-          Join teams, track habits, and achieve your health goals with our
-          comprehensive team tracking platform.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 animate-slide-in">
-          <Button
-            size="lg"
-            className="btn-primary"
-            onClick={handleGetStarted}
-          >
-            Get Started <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="dark:text-black"
-            onClick={() => {
-              window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-              toast({
-                title: "Demo Video",
-                description: "Opening demo video in a new tab.",
-              });
-            }}
-          >
-            Watch Demo
-          </Button>
+      <section className="py-20 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent dark:from-primary/10 -z-10" />
+        <div className="space-y-6 animate-fade-in">
+          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-slide-in">
+            Build Healthy Habits{" "}
+            <span className="text-primary animate-pulse-subtle">Together</span>
+          </h1>
+          <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-in opacity-0 [animation-delay:200ms]">
+            Join teams, track habits, and achieve your health goals with our
+            comprehensive team tracking platform.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 animate-slide-in opacity-0 [animation-delay:400ms]">
+            <Button
+              size="lg"
+              className="group btn-primary relative overflow-hidden transition-all duration-300 transform hover:scale-105"
+              onClick={handleGetStarted}
+            >
+              <span className="relative z-10 flex items-center">
+                Get Started <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-hover to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="dark:text-black group relative overflow-hidden transition-all duration-300 transform hover:scale-105"
+              onClick={() => {
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+                toast({
+                  title: "Demo Video",
+                  description: "Opening demo video in a new tab.",
+                });
+              }}
+            >
+              <span className="relative z-10 flex items-center">
+                Watch Demo <PlayCircle className="ml-2 h-4 w-4 transition-transform group-hover:rotate-12" />
+              </span>
+            </Button>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-muted dark:bg-gray-800 rounded-lg">
+      <section className="py-20 bg-muted/50 dark:bg-gray-800/50 rounded-3xl backdrop-blur-sm">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground dark:text-white">
+          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Why Choose HealthyHabit?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-background dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover"
+                className="group bg-background dark:bg-gray-900 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="mb-4">{feature.icon}</div>
+                <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                  {feature.icon}
+                </div>
                 <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-white">
                   {feature.title}
                 </h3>
@@ -111,8 +123,8 @@ const Index = () => {
       </section>
 
       <section className="py-20">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6 text-foreground dark:text-white">
+        <div className="text-center space-y-6">
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Ready to Get Started?
           </h2>
           <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -121,10 +133,13 @@ const Index = () => {
           </p>
           <Button
             size="lg"
-            className="btn-primary"
+            className="group btn-primary relative overflow-hidden transition-all duration-300 transform hover:scale-105"
             onClick={handleGetStarted}
           >
-            Start Your Journey <ChevronRight className="ml-2 h-4 w-4" />
+            <span className="relative z-10 flex items-center">
+              Start Your Journey <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-hover to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Button>
         </div>
       </section>
