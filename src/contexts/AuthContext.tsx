@@ -2,13 +2,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface AuthContextType {
   session: Session | null;
   user: User | null;
-  signOut: () => Promise<void>;
   isAdmin: boolean;
   isTeamCaptain: boolean;
+  signOut: () => Promise<void>;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -18,7 +20,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isTeamCaptain, setIsTeamCaptain] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
     // Get initial session
@@ -28,45 +32,70 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (session?.user) {
         checkUserRole(session.user.id);
       }
+      setLoading(false);
     });
 
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
-        checkUserRole(session.user.id);
+        await checkUserRole(session.user.id);
       } else {
         setIsAdmin(false);
         setIsTeamCaptain(false);
       }
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
   async function checkUserRole(userId: string) {
-    const { data: profile } = await supabase
+    const { data: profile, error } = await supabase
       .from("profiles")
       .select("role")
       .eq("id", userId)
       .single();
 
-    if (profile) {
-      setIsAdmin(profile.role === "admin");
-      setIsTeamCaptain(profile.role === "team_captain");
+    if (error) {
+      console.error("Error fetching user role:", error);
+      return;
     }
+
+    setIsAdmin(profile?.role === "admin");
+    setIsTeamCaptain(profile?.role === "team_captain");
   }
 
   const signOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/");
+    try {
+      await supabase.auth.signOut();
+      navigate("/");
+      toast({
+        title: "Signed out successfully",
+      });
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast({
+        title: "Error signing out",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, signOut, isAdmin, isTeamCaptain }}>
+    <AuthContext.Provider
+      value={{
+        session,
+        user,
+        isAdmin,
+        isTeamCaptain,
+        signOut,
+        loading,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
