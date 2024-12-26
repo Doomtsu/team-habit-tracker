@@ -29,6 +29,18 @@ export function SignInDialog() {
         });
         navigate("/dashboard");
       }
+      if (event === "SIGNED_UP") {
+        toast({
+          title: "Account created!",
+          description: "Your account has been created successfully.",
+        });
+      }
+      if (event === "USER_UPDATED") {
+        toast({
+          title: "Profile updated",
+          description: "Your profile has been updated successfully.",
+        });
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -44,15 +56,36 @@ export function SignInDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Welcome to HealthyHabit</DialogTitle>
-          <DialogDescription>
-            Sign in to your account or create a new one to start tracking your team's healthy habits.
+          <DialogDescription className="space-y-2">
+            <p>Sign in to your account or create a new one to start tracking your team's healthy habits.</p>
+            <p className="text-sm text-muted-foreground">
+              Password requirements:
+              <ul className="list-disc list-inside mt-1">
+                <li>Minimum 6 characters long</li>
+              </ul>
+            </p>
           </DialogDescription>
         </DialogHeader>
         <Auth
           supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa }}
+          appearance={{ 
+            theme: ThemeSupa,
+            style: {
+              message: {
+                color: 'red',
+              },
+            },
+          }}
           providers={[]}
           theme="light"
+          localization={{
+            variables: {
+              sign_up: {
+                password_label: 'Password (minimum 6 characters)',
+                email_label: 'Email address',
+              },
+            },
+          }}
         />
       </DialogContent>
     </Dialog>
