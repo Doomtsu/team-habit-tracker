@@ -60,11 +60,11 @@ const Index = () => {
             Build Healthy Habits{" "}
             <span className="text-primary animate-pulse-subtle">Together</span>
           </h1>
-          <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-in opacity-0 [animation-delay:200ms]">
+          <p className="text-xl text-muted-foreground dark:text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-in">
             Join teams, track habits, and achieve your health goals with our
             comprehensive team tracking platform.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 animate-slide-in opacity-0 [animation-delay:400ms]">
+          <div className="flex flex-wrap justify-center gap-4 animate-slide-in">
             <Button
               size="lg"
               className="group btn-primary relative overflow-hidden transition-all duration-300 transform hover:scale-105"
