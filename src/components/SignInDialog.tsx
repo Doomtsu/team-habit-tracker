@@ -29,10 +29,16 @@ export function SignInDialog() {
         });
         navigate("/dashboard");
       }
-      if (event === "SIGNED_UP") {
+      if (event === "SIGNED_OUT") {
         toast({
-          title: "Account created!",
-          description: "Your account has been created successfully.",
+          title: "Signed out",
+          description: "You have been signed out successfully.",
+        });
+      }
+      if (event === "PASSWORD_RECOVERY") {
+        toast({
+          title: "Password updated",
+          description: "Your password has been updated successfully.",
         });
       }
       if (event === "USER_UPDATED") {
