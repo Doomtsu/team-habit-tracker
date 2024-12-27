@@ -62,9 +62,9 @@ export function SignInDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Welcome to HealthyHabit</DialogTitle>
-          <DialogDescription className="space-y-2">
+          <DialogDescription>
             <p>Sign in to your account or create a new one to start tracking your team's healthy habits.</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground mt-2">
               Password requirements:
               <ul className="list-disc list-inside mt-1">
                 <li>Minimum 6 characters long</li>
