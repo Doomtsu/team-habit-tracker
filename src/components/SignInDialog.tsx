@@ -80,6 +80,26 @@ export function SignInDialog() {
               message: {
                 color: 'red',
               },
+              container: {
+                width: '100%',
+              },
+              input: {
+                width: '100%',
+                padding: '8px 12px',
+                borderRadius: '6px',
+                border: '1px solid #e2e8f0',
+              },
+              button: {
+                width: '100%',
+                padding: '8px',
+                borderRadius: '6px',
+                backgroundColor: 'var(--primary)',
+                color: 'white',
+                fontWeight: '500',
+                '&:hover': {
+                  backgroundColor: 'var(--primary-dark)',
+                },
+              },
             },
           }}
           providers={[]}
@@ -87,8 +107,18 @@ export function SignInDialog() {
           localization={{
             variables: {
               sign_up: {
-                password_label: 'Password (minimum 6 characters)',
                 email_label: 'Email address',
+                password_label: 'Password (minimum 6 characters)',
+                email_input_placeholder: 'Your email address',
+                password_input_placeholder: 'Your password',
+                button_label: 'Sign up',
+              },
+              sign_in: {
+                email_label: 'Email address',
+                password_label: 'Your password',
+                email_input_placeholder: 'Your email address',
+                password_input_placeholder: 'Your password',
+                button_label: 'Sign in',
               },
             },
           }}
