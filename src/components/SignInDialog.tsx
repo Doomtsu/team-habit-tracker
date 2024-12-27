@@ -63,13 +63,13 @@ export function SignInDialog() {
         <DialogHeader>
           <DialogTitle>Welcome to HealthyHabit</DialogTitle>
           <DialogDescription>
-            <p>Sign in to your account or create a new one to start tracking your team's healthy habits.</p>
-            <p className="text-sm text-muted-foreground mt-2">
+            Sign in to your account or create a new one to start tracking your team's healthy habits.
+            <div className="text-sm text-muted-foreground mt-2">
               Password requirements:
               <ul className="list-disc list-inside mt-1">
                 <li>Minimum 6 characters long</li>
               </ul>
-            </p>
+            </div>
           </DialogDescription>
         </DialogHeader>
         <Auth
@@ -96,9 +96,8 @@ export function SignInDialog() {
                 backgroundColor: 'var(--primary)',
                 color: 'white',
                 fontWeight: '500',
-                '&:hover': {
-                  opacity: 0.9,
-                },
+                opacity: '1',
+                transition: 'opacity 0.2s ease',
               },
               anchor: {
                 color: 'var(--primary)',
