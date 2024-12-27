@@ -56,7 +56,7 @@ export function SignInDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="default" className="btn-primary">
-          Get Started
+          Sign In
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
