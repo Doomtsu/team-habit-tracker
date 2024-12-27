@@ -96,19 +96,30 @@ export function SignInDialog() {
                 backgroundColor: 'var(--primary)',
                 color: 'white',
                 fontWeight: '500',
+                '&:hover': {
+                  opacity: 0.9,
+                },
+              },
+              anchor: {
+                color: 'var(--primary)',
+                fontWeight: '500',
               },
             },
           }}
           providers={[]}
+          redirectTo={window.location.origin}
+          magicLink={false}
+          showLinks={true}
           theme="light"
           localization={{
             variables: {
               sign_up: {
                 email_label: 'Email address',
-                password_label: 'Password (minimum 6 characters)',
+                password_label: 'Create password (minimum 6 characters)',
                 email_input_placeholder: 'Your email address',
                 password_input_placeholder: 'Your password',
                 button_label: 'Sign up',
+                loading_button_label: 'Creating account...',
               },
               sign_in: {
                 email_label: 'Email address',
@@ -116,6 +127,7 @@ export function SignInDialog() {
                 email_input_placeholder: 'Your email address',
                 password_input_placeholder: 'Your password',
                 button_label: 'Sign in',
+                loading_button_label: 'Signing in...',
               },
             },
           }}
