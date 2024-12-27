@@ -96,9 +96,7 @@ export function SignInDialog() {
                 backgroundColor: 'var(--primary)',
                 color: 'white',
                 fontWeight: '500',
-                ':hover': {
-                  backgroundColor: 'var(--primary-dark)',
-                },
+                transition: 'background-color 0.2s ease',
               },
             },
           }}
