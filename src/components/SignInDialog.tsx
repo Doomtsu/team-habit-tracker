@@ -55,7 +55,7 @@ export function SignInDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" className="btn-primary">
+        <Button variant="default">
           Sign In
         </Button>
       </DialogTrigger>
@@ -77,9 +77,6 @@ export function SignInDialog() {
           appearance={{ 
             theme: ThemeSupa,
             style: {
-              message: {
-                color: 'red',
-              },
               container: {
                 width: '100%',
               },
