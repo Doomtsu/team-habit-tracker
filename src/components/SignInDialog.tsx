@@ -96,7 +96,6 @@ export function SignInDialog() {
                 backgroundColor: 'var(--primary)',
                 color: 'white',
                 fontWeight: '500',
-                transition: 'background-color 0.2s ease',
               },
             },
           }}
