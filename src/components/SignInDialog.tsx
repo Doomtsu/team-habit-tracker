@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,122 +11,52 @@ import {
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+import { LogIn } from "lucide-react";
 
 export function SignInDialog() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const navigate = useNavigate();
-  const { toast } = useToast();
-
-  React.useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN") {
-        setIsOpen(false);
-        toast({
-          title: "Welcome back!",
-          description: "You have successfully signed in.",
-        });
-        navigate("/dashboard");
-      }
-      if (event === "SIGNED_OUT") {
-        toast({
-          title: "Signed out",
-          description: "You have been signed out successfully.",
-        });
-      }
-      if (event === "PASSWORD_RECOVERY") {
-        toast({
-          title: "Password updated",
-          description: "Your password has been updated successfully.",
-        });
-      }
-      if (event === "USER_UPDATED") {
-        toast({
-          title: "Profile updated",
-          description: "Your profile has been updated successfully.",
-        });
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate, toast]);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="default">
+        <Button variant="default" className="btn-primary group">
           Sign In
+          <LogIn className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Welcome to HealthyHabit</DialogTitle>
-          <DialogDescription>
-            Sign in to your account or create a new one to start tracking your team's healthy habits.
-            <div className="text-sm text-muted-foreground mt-2">
-              Password requirements:
-              <ul className="list-disc list-inside mt-1">
-                <li>Minimum 6 characters long</li>
-              </ul>
-            </div>
+          <DialogTitle className="text-2xl font-bold tracking-tight">
+            Welcome Back!
+          </DialogTitle>
+          <DialogDescription className="text-muted-foreground">
+            Sign in to your account to track your team's progress
           </DialogDescription>
         </DialogHeader>
-        <Auth
-          supabaseClient={supabase}
-          appearance={{ 
-            theme: ThemeSupa,
-            style: {
-              container: {
-                width: '100%',
+        <div className="mt-4">
+          <Auth
+            supabaseClient={supabase}
+            appearance={{
+              theme: ThemeSupa,
+              style: {
+                container: {
+                  width: '100%',
+                },
+                button: {
+                  width: '100%',
+                  backgroundColor: 'rgb(var(--primary))',
+                  color: 'white',
+                },
+                anchor: {
+                  color: 'rgb(var(--primary))',
+                },
               },
-              input: {
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '6px',
-                border: '1px solid #e2e8f0',
-              },
-              button: {
-                width: '100%',
-                padding: '8px',
-                borderRadius: '6px',
-                backgroundColor: 'var(--primary)',
-                color: 'white',
-                fontWeight: '500',
-                opacity: '1',
-                transition: 'opacity 0.2s ease',
-              },
-              anchor: {
-                color: 'var(--primary)',
-                fontWeight: '500',
-              },
-            },
-          }}
-          providers={[]}
-          redirectTo={window.location.origin}
-          magicLink={false}
-          showLinks={true}
-          theme="light"
-          localization={{
-            variables: {
-              sign_up: {
-                email_label: 'Email address',
-                password_label: 'Create password (minimum 6 characters)',
-                email_input_placeholder: 'Your email address',
-                password_input_placeholder: 'Your password',
-                button_label: 'Sign up',
-                loading_button_label: 'Creating account...',
-              },
-              sign_in: {
-                email_label: 'Email address',
-                password_label: 'Your password',
-                email_input_placeholder: 'Your email address',
-                password_input_placeholder: 'Your password',
-                button_label: 'Sign in',
-                loading_button_label: 'Signing in...',
-              },
-            },
-          }}
-        />
+            }}
+            theme="default"
+            providers={[]}
+            redirectTo={window.location.origin}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );
