@@ -17,7 +17,7 @@ const Index = () => {
             Build Healthy Habits Together
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-[600px] animate-fade-in delay-150 dark:text-gray-300">
+          <p className="text-xl text-foreground/80 dark:text-gray-200 max-w-[600px] animate-fade-in delay-150">
             Track your team's health goals, celebrate achievements, and motivate each other to maintain healthy habits.
           </p>
 
@@ -50,24 +50,24 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-450">
               <Activity className="w-12 h-12 mb-4 text-primary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2">Track Progress</h3>
-              <p className="text-muted-foreground dark:text-gray-300">
+              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Track Progress</h3>
+              <p className="text-foreground/80 dark:text-gray-200">
                 Set and monitor daily, weekly, and monthly goals for various healthy habits.
               </p>
             </div>
 
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-500">
               <Users className="w-12 h-12 mb-4 text-secondary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2">Team Competition</h3>
-              <p className="text-muted-foreground dark:text-gray-300">
+              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Team Competition</h3>
+              <p className="text-foreground/80 dark:text-gray-200">
                 Compete with other teams and earn badges for achieving milestones.
               </p>
             </div>
 
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-550">
               <Trophy className="w-12 h-12 mb-4 text-primary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2">Stay Motivated</h3>
-              <p className="text-muted-foreground dark:text-gray-300">
+              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Stay Motivated</h3>
+              <p className="text-foreground/80 dark:text-gray-200">
                 Receive reminders and celebrate team achievements together.
               </p>
             </div>
