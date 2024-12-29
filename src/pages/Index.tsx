@@ -13,11 +13,11 @@ const Index = () => {
     <Layout>
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col items-center text-center space-y-8">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter animate-fade-in text-gray-900 dark:text-gray-900">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter animate-fade-in gradient-text">
             Build Healthy Habits Together
           </h1>
           
-          <p className="text-xl text-gray-700 dark:text-gray-700 max-w-[600px] animate-fade-in delay-150">
+          <p className="text-xl text-foreground/80 dark:text-gray-200 max-w-[600px] animate-fade-in delay-150">
             Track your team's health goals, celebrate achievements, and motivate each other to maintain healthy habits.
           </p>
 
