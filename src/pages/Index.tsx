@@ -50,24 +50,24 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-450">
               <Activity className="w-12 h-12 mb-4 text-primary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Track Progress</h3>
-              <p className="text-foreground/80 dark:text-gray-200">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-900">Track Progress</h3>
+              <p className="text-gray-700 dark:text-gray-700">
                 Set and monitor daily, weekly, and monthly goals for various healthy habits.
               </p>
             </div>
 
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-500">
               <Users className="w-12 h-12 mb-4 text-secondary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Team Competition</h3>
-              <p className="text-foreground/80 dark:text-gray-200">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-900">Team Competition</h3>
+              <p className="text-gray-700 dark:text-gray-700">
                 Compete with other teams and earn badges for achieving milestones.
               </p>
             </div>
 
             <div className="p-6 rounded-lg border glass-card hover-lift animate-fade-in delay-550">
               <Trophy className="w-12 h-12 mb-4 text-primary mx-auto animate-pulse-subtle" />
-              <h3 className="text-xl font-semibold mb-2 text-foreground dark:text-gray-100">Stay Motivated</h3>
-              <p className="text-foreground/80 dark:text-gray-200">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-900">Stay Motivated</h3>
+              <p className="text-gray-700 dark:text-gray-700">
                 Receive reminders and celebrate team achievements together.
               </p>
             </div>
