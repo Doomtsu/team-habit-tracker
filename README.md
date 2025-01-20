@@ -3,7 +3,7 @@
 - Progress Visualization: Interactive charts and graphs provide an engaging way to view progress over time.
 - Reminders and Notifications: Customizable notifications encourage consistency and help teams meet their goals.
 - Gamification: Teams earn digital badges and rewards for achieving milestones, promoting friendly competition.
-- User Roles:
+- User Roles: 
   - Team Members: Manage personal goals and contribute to team efforts.
   - Team Captains: Set team goals and oversee progress.
   - Administrators: Manage teams, set company-wide goals, and monitor overall performance.
@@ -14,7 +14,7 @@
 
 This project is built with:
 
-- Vite
+- Vite 
 - TypeScript
 - React
 - shadcn-ui
